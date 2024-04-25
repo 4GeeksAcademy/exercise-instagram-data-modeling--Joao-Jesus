@@ -16,6 +16,8 @@ class User(Base):
     first_name = Column(String(250), nullable=False)
     last_name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
+    post_id = Column(Integer, ForeignKey('post.id'))
+
 
 class Follower(Base):
     __tablename__ = 'follower'
@@ -52,6 +54,7 @@ class Comment(Base):
     comment_text  = Column(String(100), nullable=False)
     author_id = Column(Integer, ForeignKey('author.id'))
     post_id = Column(Integer, ForeignKey('post.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
     post = relationship(Post)    
 
 
